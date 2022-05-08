@@ -1,6 +1,7 @@
 // ignore_for_file: file_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:soa_prototype1/mydrawer.dart';
 class Live extends StatefulWidget {
   const Live({ Key? key }) : super(key: key);
 
@@ -13,60 +14,15 @@ class _LiveState extends State<Live> {
   Widget build(BuildContext context) {
     return Scaffold(
        appBar: AppBar(
-       backgroundColor: Colors.pink[900],
+       backgroundColor: Colors.pink[700],
        title: Text("Live and recorded events"),
        centerTitle: true,
      ),
       drawer: SafeArea(
-        child: Drawer(
-          backgroundColor: Colors.pink[900],
-          child: ListView(
-          
-            padding: EdgeInsets.all(3),
-            // ignore: prefer_const_literals_to_create_immutables
-            children: [
-              ListTile(
-                leading: Icon(Icons.person),
-                title: Text("Rev",
-                style: TextStyle(color: Colors.white),
-                ),
-                onTap: (){//navigate to rev page 
-                },
-              ),
-               ListTile(
-                leading: Icon(Icons.person),
-                title: Text("Ushers",
-                style: TextStyle(color: Colors.white),
-                ),
-                onTap: (){Navigator.pushReplacementNamed(context,"/ushers"); 
-                },),
-                            ListTile(
-                leading: Icon(Icons.person),
-                title: Text("Events",
-                style: TextStyle(color: Colors.white),
-                ),
-                onTap: (){Navigator.pushReplacementNamed(context,"/events");
-                },),
-                            ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Facebook live",
-              style: TextStyle(color: Colors.white),
-              ),
-              onTap: (){Navigator.pushReplacementNamed(context,"/live");
-              },),
-                          ListTile(
-              leading: Icon(Icons.person),
-              title: Text("Book appointment",
-              style: TextStyle(color: Colors.white),
-              ),
-              onTap: (){//navigate to appointment page 
-              },)
-            ],
-          ),
-        ),
+        child: draw(context)
       ), 
      body: Center(
-       child:Text("Attach using facebook API to videos page")
+       child:Text("Attach using facebook API  consider using youtube to avoid verification to videos page")
      ),
     );
   }
