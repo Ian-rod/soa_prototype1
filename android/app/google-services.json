@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1037269022558",
+    "project_id": "ssoa-1dbca",
+    "storage_bucket": "ssoa-1dbca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037269022558:android:c5ad806eac8e5633ee81cf",
+        "android_client_info": {
+          "package_name": "com.example.soa_prototype1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1037269022558-bj5pk3tehpqs1nk7bmm4tuop51quh6vj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDzxw9qTn6W9BGmnwClM9dwrR2qecKncg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1037269022558-bj5pk3tehpqs1nk7bmm4tuop51quh6vj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,20 +1,40 @@
 // ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
-import 'package:soa_prototype1/Facebook.dart';
-import 'package:soa_prototype1/events.dart';
-import 'package:soa_prototype1/homepage.dart';
-import 'package:soa_prototype1/ushers.dart';
-void main()
+import 'package:provider/provider.dart';
+import 'package:soa_prototype1/Pages/appointment.dart';
+import 'package:soa_prototype1/Pages/signup.dart';
+import 'package:soa_prototype1/Wrapper.dart';
+import 'package:soa_prototype1/serve.dart';
+import 'Pages/live.dart';
+import './Pages/events.dart';
+import './Pages/ushers.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import './Wrapper.dart';
+Future<void> main() async
 {
-  runApp(MaterialApp(
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  runApp(
+    MultiProvider(providers: [
+      StreamProvider<User?>.value(value:Serve.status, 
+      initialData: null,
+      )
+    ],
+    child:
+    MaterialApp(
+    home: Wrapper(),
+    theme: ThemeData(
+      primarySwatch: Colors.pink,
+      primaryColor: Colors.pink[700]
+    ),
     debugShowCheckedModeBanner: false,
-    initialRoute: "/",
     routes:{
-      "/":(context) => Home(),
       "/ushers":(context) => Ushers(),
       "/events":((context) => Events()),
-      "/live":(context) => Live()
+      "/live":(context) => View(),
+      "/signup":((context) => Signup()),
+      "/book":(context) => Book()
     } ,
-  ));
+  )));
 }

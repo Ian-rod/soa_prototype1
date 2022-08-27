@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:soa_prototype1/serve.dart';
 
 Widget draw( BuildContext context)
 {
@@ -25,7 +26,8 @@ Widget draw( BuildContext context)
                 title: Text("Ushers",
                 style: TextStyle(color: Colors.white),
                 ),
-                onTap: (){Navigator.pushReplacementNamed(context,"/ushers"); 
+                onTap: ()async{
+                  Navigator.pushReplacementNamed(context,"/ushers"); 
                 },),
                             ListTile(
                 leading: Icon(Icons.person),
@@ -34,9 +36,9 @@ Widget draw( BuildContext context)
                 ),
                 onTap: (){Navigator.pushReplacementNamed(context,"/events");
                 },),
-                            ListTile(
+               ListTile(
               leading: Icon(Icons.person),
-              title: Text("Facebook live",
+              title: Text("videos",
               style: TextStyle(color: Colors.white),
               ),
               onTap: (){Navigator.pushReplacementNamed(context,"/live");
@@ -46,7 +48,16 @@ Widget draw( BuildContext context)
               title: Text("Book appointment",
               style: TextStyle(color: Colors.white),
               ),
-              onTap: (){//navigate to appointment page 
+              onTap: (){Navigator.pushReplacementNamed(context,"/book"); 
+              },),
+                                        ListTile(
+              leading: Icon(Icons.logout),
+              title: Text("Sign Out",
+              style: TextStyle(color: Colors.white),
+              ),
+              onTap: ()async{
+                await Serve.logout();
+                ScaffoldMessenger.of(context).showSnackBar(Serve.notification);
               },)
             ],
           ),

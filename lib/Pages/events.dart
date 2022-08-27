@@ -1,8 +1,7 @@
-// ignore_for_file: prefer_const_constructors, prefer_typing_uninitialized_variables, avoid_web_libraries_in_flutter
+// ignore_for_file: prefer_const_constructors, prefer_typing_uninitialized_variables, avoid_web_libraries_in_flutter, non_constant_identifier_names
 import 'package:flutter/material.dart';
-import 'package:soa_prototype1/mydrawer.dart';
+import './mydrawer.dart';
 import 'package:table_calendar/table_calendar.dart';
-import './daily.dart';
 class Events extends StatefulWidget {
   const Events({ Key? key }) : super(key: key);
 
@@ -13,6 +12,7 @@ class Events extends StatefulWidget {
 class _EventsState extends State<Events> { 
   TextEditingController eventcontroller=TextEditingController();
   var selectedEvents={};
+  var Etitle;
   CalendarFormat format=CalendarFormat.month;
   DateTime selectedDay=DateTime.now();
   DateTime focusedDay=DateTime.now();
@@ -25,13 +25,16 @@ class _EventsState extends State<Events> {
   List getEventsFromDay(DateTime date)
   {
    if (date.weekday == DateTime.tuesday) {
-     return [Daily("Appointment"),(selectedEvents[date]??"")];
+     Etitle="Appointment";
+     return [Etitle,(selectedEvents[date]??"")];
   }
   else if (date.weekday == DateTime.wednesday) {
-    return [Daily("Communion"),(selectedEvents[date]??"")];
+    Etitle="Communion";
+    return [Etitle,(selectedEvents[date]??"")];
   }
   else if (date.weekday == DateTime.friday) {
-    return [Daily("Prophetic service"),(selectedEvents[date]??"")];
+    Etitle="Prophetic service";
+    return [Etitle,(selectedEvents[date]??"")];
   }
     return selectedEvents[date]??[];
   }
@@ -59,6 +62,9 @@ class _EventsState extends State<Events> {
   lastDay: DateTime(2050),
   focusedDay: focusedDay,
   calendarFormat: format,
+  calendarStyle: CalendarStyle(
+    markersMaxCount: 1,
+  ),
   onFormatChanged: (CalendarFormat formated) 
   {
     setState(() {
@@ -109,11 +115,11 @@ floatingActionButton:FloatingActionButton.extended(onPressed:()=>showDialog
         else{
          if(selectedEvents[selectedDay]!=null)
           {
-            selectedEvents[selectedDay].add(Daily(eventcontroller.text));
+            selectedEvents[selectedDay].add(eventcontroller.text);
             eventcontroller.clear();
           }
           else{
-              selectedEvents[selectedDay]=Daily(eventcontroller.text);
+              selectedEvents[selectedDay]=eventcontroller.text;
               eventcontroller.clear();
           }
           Navigator.pop(context);
@@ -125,7 +131,6 @@ floatingActionButton:FloatingActionButton.extended(onPressed:()=>showDialog
   )),
  icon:Icon(Icons.add),
  label:Text("Add a personal event") ,
-backgroundColor: Color.fromARGB(255, 243, 20, 94),
 tooltip: "Add an event",
  ),
       );

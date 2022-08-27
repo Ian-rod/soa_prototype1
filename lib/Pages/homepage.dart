@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors, duplicate_ignore
 
 import 'package:flutter/material.dart';
-import 'package:soa_prototype1/mydrawer.dart';
+import './mydrawer.dart';
 
 class Home extends StatefulWidget {
   const Home({ Key? key }) : super(key: key);
@@ -22,8 +22,18 @@ class _HomeState extends State<Home> {
       drawer: SafeArea(
         child: draw(context)
       ),
-      body:Center(
-        child: Text("To place upcoming major event here"),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(
+          child: Center(
+            child: Column(
+              children: [
+               Text("To place upcoming major event here"),
+               ElevatedButton(onPressed: null, child: Text("Tap to book an appointment"))
+              ],
+            ),
+          ),
+        ),
       )
       );
   }
